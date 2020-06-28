@@ -1,13 +1,13 @@
 {
-  "application.js": "/packs/js/application-ca06a99fbebb623c9eb5.js",
-  "application.js.map": "/packs/js/application-ca06a99fbebb623c9eb5.js.map",
+  "application.js": "/packs/js/application-95439938854d4fbb5790.js",
+  "application.js.map": "/packs/js/application-95439938854d4fbb5790.js.map",
   "entrypoints": {
     "application": {
       "js": [
-        "/packs/js/application-ca06a99fbebb623c9eb5.js"
+        "/packs/js/application-95439938854d4fbb5790.js"
       ],
       "js.map": [
-        "/packs/js/application-ca06a99fbebb623c9eb5.js.map"
+        "/packs/js/application-95439938854d4fbb5790.js.map"
       ]
     },
     "hello_react": {
@@ -20,15 +20,17 @@
     },
     "server_rendering": {
       "js": [
-        "/packs/js/server_rendering-bb91280f9f572131206c.js"
+        "/packs/js/server_rendering-cdad6163279bb413f02b.js"
       ],
       "js.map": [
-        "/packs/js/server_rendering-bb91280f9f572131206c.js.map"
+        "/packs/js/server_rendering-cdad6163279bb413f02b.js.map"
       ]
     }
   },
   "hello_react.js": "/packs/js/hello_react-6b1be3a6914a1d3eee5c.js",
   "hello_react.js.map": "/packs/js/hello_react-6b1be3a6914a1d3eee5c.js.map",
-  "server_rendering.js": "/packs/js/server_rendering-bb91280f9f572131206c.js",
-  "server_rendering.js.map": "/packs/js/server_rendering-bb91280f9f572131206c.js.map"
+  "media/components/images/micasa-logo-black.png": "/packs/media/components/images/micasa-logo-black-57c3b113b139ce4fbe72e7a5e45cb79f.png",
+  "media/components/images/micasa-logo.png": "/packs/media/components/images/micasa-logo-5142cfdbe3a37d1037b3052b1203c8ab.png",
+  "server_rendering.js": "/packs/js/server_rendering-cdad6163279bb413f02b.js",
+  "server_rendering.js.map": "/packs/js/server_rendering-cdad6163279bb413f02b.js.map"
 }

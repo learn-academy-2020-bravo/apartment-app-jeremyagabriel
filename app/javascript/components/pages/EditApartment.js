@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom'
 const EditApartment = props => {
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState(false)
+  const [editable, setEditable] = useState(false)
   const [form, setForm] = useState({
       street_number: "",
       city: "",
@@ -26,7 +27,7 @@ const EditApartment = props => {
     getApartment()},[])
 
   const getApartment = () => {
-    fetch(`/apartments/${props.match.params.id}`)
+    fetch(`/apartments/${props.match.params.id}/edit`)
     .then(response => {
       if(response.ok) return response.json()
     })
@@ -48,6 +49,9 @@ const EditApartment = props => {
         bedroom_count: apt.bedroom_count,
         bathroom_count: apt.bathroom_count
       })
+      if (props.currentUserId === apt.user_id) {
+        setEditable(true)
+      }
     })
   }
 
@@ -82,8 +86,10 @@ const EditApartment = props => {
 
   return(
     <>
+
+      {/*!editable && <Redirect to={`/listings/${props.match.params.id}`} />*/}
       <Container>
-        <h3 style={{textAlign:"center"}}>Edit your apartment listing.</h3>
+        <h3 style={{textAlign:"center", margin:"80px 0 10px 0"}}>Edit your apartment listing.</h3>
         <Form>
           <FormGroup>
             <Label htmlFor="street_number">Address</Label>
@@ -170,7 +176,7 @@ const EditApartment = props => {
             <Input type="textarea" name="description" value={ form.description } onChange={ handleChange } />
           </FormGroup>
 
-          {error && <h6 color="red">Please enter the form correctly</h6>}
+          {error && <h6 style={{color:"red",fontStyle:"italic"}}>Please enter the form correctly.</h6>}
 
           <a href={`/listings/${props.match.params.id}`}>
             <Button name="submit" onClick = { handleSubmit }>Submit</Button>

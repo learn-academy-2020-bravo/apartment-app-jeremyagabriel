@@ -25,6 +25,7 @@ class ApartmentsController < ApplicationController
 
   def edit
     apartment = current_user.apartments.find(params[:id])
+    render json: apartment
   end
 
   def update

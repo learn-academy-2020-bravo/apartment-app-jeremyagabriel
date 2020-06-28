@@ -54,8 +54,8 @@ const NewApartment = props => {
 
   return(
     <>
-      <Container>
-        <h3 style={{textAlign:"center"}}>Enter your apartment details.</h3>
+      <Container style={{marginBottom:"50px"}}>
+        <h3 style={{textAlign:"center", margin:"80px 0 10px 0"}}>Enter your apartment details.</h3>
         <Form>
           <FormGroup>
             <Label htmlFor="street_number">Address</Label>
@@ -142,7 +142,7 @@ const NewApartment = props => {
             <Input type="textarea" name="description" value={ form.description } onChange={ handleChange } />
           </FormGroup>
 
-          {error && <h6>Please fill out the form correctly</h6>}
+          {error && <h6 style={{color:"red",fontStyle:"italic"}}>Please fill out the form correctly.</h6>}
 
           <a href="/listings">
             <Button name="submit" onClick = { handleSubmit }>Submit</Button>
