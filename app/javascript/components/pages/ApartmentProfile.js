@@ -70,7 +70,7 @@ const ApartmentProfile = props => {
 
   // Post apt id of favorited to Favorite model
   const addToFavorites = () => {
-    fetch("http://localhost:3000/favorites", {
+    fetch("/favorites", {
       body: JSON.stringify({listing: aptId}),
       headers:{
         "Content-Type": "application/json"

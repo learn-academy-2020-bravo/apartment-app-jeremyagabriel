@@ -4,7 +4,9 @@ import { Button, Form, FormGroup, Label, Input, FormText, Container, Col, Row } 
 import { Redirect } from 'react-router-dom'
 
 const NewApartment = props => {
+  // // Success is true when submission is successful
   const [success, setSuccess] = useState(false)
+  // Error is true when submission is unsuccessful
   const [error, setError] = useState(false)
   const [form, setForm] = useState({
       street_number: "",
@@ -39,6 +41,7 @@ const NewApartment = props => {
     })
   }
 
+  // Set state of the form upon changing of the input values
   const handleChange = e => {
     setForm({
         ...form,
@@ -46,6 +49,7 @@ const NewApartment = props => {
     })
   }
 
+  // Invoke the createApartment fetch after submission
   const handleSubmit = e => {
     e.preventDefault()
     console.log(form)
@@ -142,8 +146,10 @@ const NewApartment = props => {
             <Input type="textarea" name="description" value={ form.description } onChange={ handleChange } />
           </FormGroup>
 
+          {/*Error message if error state is true*/}
           {error && <h6 style={{color:"red",fontStyle:"italic"}}>Please fill out the form correctly.</h6>}
 
+          {/*Redirect to listings page if the submission is successful*/}
           <a href="/listings">
             <Button name="submit" onClick = { handleSubmit }>Submit</Button>
             { success && <Redirect to="/listings"/>}

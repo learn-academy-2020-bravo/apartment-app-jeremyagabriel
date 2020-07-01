@@ -3,21 +3,25 @@ import { Container } from 'reactstrap'
 import { NavLink } from 'react-router-dom'
 
 const Favorites = props => {
-  const [favorites, setFavorites] = useState([])
+  // Array of apt Ids that were favorited by the current user
+  const [favAptIds, setFavAptIds] = useState([])
+  // Array of apartment objects fetched from API
   const [apts, setApts] = useState([])
 
   useEffect(() =>{
     getFavorites()},[])
 
   const getFavorites = () => {
+    // Get JSON from the Favorite instances with user_id of current user
     fetch("/favorites")
     .then(response => {
       if(response.ok) return response.json()
     })
     .then(favs => {
+      // Pull only the apt id (i.e. listing) from each favorite object
       let favIds = favs.map(value=>value.listing)
       console.log(favIds)
-      setFavorites(favIds)
+      setFavAptIds(favIds)
     })
     .then(() => {
       return fetch("http://localhost:3000/apartments")
@@ -26,6 +30,7 @@ const Favorites = props => {
       if(response.ok) return response.json()
     })
     .then(apts => {
+      // Order the array of apartments by apt id
       let sortedApts = apts.sort((a,b) => {
         if (a.id === b.id) return 0
         else if (a.id > b.id) return 1
@@ -41,8 +46,10 @@ const Favorites = props => {
       <Container style={{marginBottom:"50px"}}>
       <h3 style={{textAlign:"center",margin:"80px 0 10px 0"}}>Listings You're Following</h3>
         {apts.map((apt,index) => {
-          if (favorites.includes(apt.id)) {
+          {/* Map thru the apt objects and only return those where favorite user_id is the same as current user's id */}
+          if (favAptIds.includes(apt.id)) {
             let owner = false
+            {/*Set local variable to true if the apt's user_id is the same as the current user's id*/}
             if (apt.user_id === props.currentUserId) owner = true
             return(
               <div className="index-listing-container" key={index}>

@@ -3,12 +3,15 @@ import { Button, Container, Modal, ModalHeader, ModalBody, ModalFooter } from 'r
 import { NavLink } from 'react-router-dom'
 
 const ApartmentIndex = props => {
+  // Array of apartment objects fetched from API
   const [apts, setApts] = useState([])
+  // Modal is true to open the sign in modal for logged out guests
   const [modal, setModal] = useState(false)
   const toggle = () => setModal(!modal)
 
   useEffect(() =>{
-    getApartments()},[])
+    getApartments()
+  },[])
 
   const getApartments = () => {
     fetch("/apartments")
@@ -16,11 +19,14 @@ const ApartmentIndex = props => {
       if(response.ok) return response.json()
     })
     .then(apts => {
+      // Order the array of apartments by apt id
       let sortedApts = apts.sort((a,b) => {
         if (a.id === b.id) return 0
         else if (a.id > b.id) return 1
         else return -1
       })
+      // Set state with the sorted data
+      console.log(sortedApts)
       setApts(sortedApts)
     })
   }

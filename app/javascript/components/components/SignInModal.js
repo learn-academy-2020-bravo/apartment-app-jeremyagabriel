@@ -2,6 +2,7 @@ import React from 'react'
 import { Button } from 'reactstrap'
 
 const SignInModal = props => {
+  // Modal window user clicks to open an apartment profile while logged out
   return
     <>
       <div

@@ -12,6 +12,7 @@ import Home from './pages/Home'
 import Header from './components/Header'
 
 const App = props => {
+  // Set state of of current user id pulled from Rails
   const [currentUserId, setCurrentUserId] = useState(props.user.id)
 
   return (
@@ -23,11 +24,13 @@ const App = props => {
       />
       <Switch>
         <Route exact path="/" render={() => <Home />} />
+
         <Route exact path="/listings" render={() => <ApartmentIndex logged_in={props.logged_in} currentUserId={currentUserId}/>} />
 
         {!props.logged_in &&
           <Switch>
             <Route exact path="/listings/*" render={() => <Redirect to="/listings" />} />
+
             <Route path="/user/*" render={() => <Redirect to="/" /> } />
           </Switch>
         }
@@ -39,6 +42,7 @@ const App = props => {
             <Route exact path="/listings/:id" render={(props) => <ApartmentProfile {...props} currentUserId={currentUserId}/>} />
 
             <Route exact path="/listings/:id/edit" render={(props) => <EditApartment {...props} currentUserId={currentUserId} /> } />
+
             <Route exact path="/user/favorites" render={(props) => <Favorites {...props} currentUserId={currentUserId} /> } />
           </Switch>
         }
