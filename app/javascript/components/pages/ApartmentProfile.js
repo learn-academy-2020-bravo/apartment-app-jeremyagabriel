@@ -19,8 +19,6 @@ const ApartmentProfile = props => {
   const [favorited, setFavorited] = useState(false)
   // Favorite model id of the current apt showing
   const [favId, setFavId] = useState()
-  // Apt id of the current apt showing
-  const [aptId, setAptId] = useState()
   // Function to toggle delete modal
   const toggle = () => setModal(!modal)
 
@@ -56,7 +54,6 @@ const ApartmentProfile = props => {
         if (props.currentUserId === aptData.user_id) setEditable(true)
         // Set state of the current apt to access data later
         setCurrentApt(aptData)
-        setAptId(aptData.id)
         // Set favorited to true if the current user's array of favorited apt id's includes the apt displayed
         if (favAptIdsArray.includes(aptData.id)) setFavorited(true)
       }
@@ -68,7 +65,7 @@ const ApartmentProfile = props => {
   // Post apt id of favorited to Favorite model
   const addToFavorites = () => {
     fetch("/favorites", {
-      body: JSON.stringify({listing: aptId}),
+      body: JSON.stringify({listing: props.match.params.id}),
       headers:{
         "Content-Type": "application/json"
       },

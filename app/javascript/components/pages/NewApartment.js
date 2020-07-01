@@ -161,3 +161,19 @@ const NewApartment = props => {
 }
 
 export default NewApartment
+
+const addToComments = () => {
+  fetch("/comments", {
+    body: JSON.stringify({post: commentEntry}),
+    headers:{
+      "Content-Type": "application/json"
+    },
+    method: "POST"
+  })
+  .then(response => {
+    if (response.ok) setSuccess(true)
+    else setError(true)
+  }).catch(error => {
+    console.log("error:",error)
+  })
+}
