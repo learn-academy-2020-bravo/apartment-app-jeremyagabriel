@@ -13,6 +13,7 @@ import Header from './components/Header'
 
 const App = props => {
   // Set state of of current user id pulled from Rails
+  const [currentUserName, setCurrentUserName] = useState(props.user.user_name)
   const [currentUserId, setCurrentUserId] = useState(props.user.id)
 
   return (

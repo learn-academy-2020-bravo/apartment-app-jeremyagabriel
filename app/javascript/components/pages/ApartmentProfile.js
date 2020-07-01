@@ -17,8 +17,6 @@ const ApartmentProfile = props => {
   const [modal, setModal] = useState(false)
   // Favorited is toggled true/false upon the post or delete fetch to Favorite model
   const [favorited, setFavorited] = useState(false)
-  // Array of just apt Ids favorited by the current user
-  const [favAptIds, setFavAptIds] = useState([])
   // Favorite model id of the current apt showing
   const [favId, setFavId] = useState()
   // Apt id of the current apt showing
@@ -47,7 +45,6 @@ const ApartmentProfile = props => {
         // Create array of just the ids of the apts favorited by current user
         favAptIdsArray = favData.map(value=>value.listing)
         console.log("favAptIdsArray:",favAptIdsArray)
-        setFavAptIds(favAptIdsArray)
       }
 
       // Fetch the apartment JSON specific to apt id
@@ -112,7 +109,7 @@ const ApartmentProfile = props => {
   // On click for the follow/following button
   const handleFavorite = e => {
     e.preventDefault()
-    if (!favAptIds.includes(currentApt.id)) addToFavorites()
+    if (!favorited) addToFavorites()
     else removeFromFavorites()
   }
 
